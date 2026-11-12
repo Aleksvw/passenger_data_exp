@@ -4719,11 +4719,11 @@ color: #333;
 
 <section id="what-this-notebook-covers" class="level2">
 <h2 class="anchored" data-anchor-id="what-this-notebook-covers">What this notebook covers</h2>
-<p>This is the first of five notebooks documenting the party-type analysis of a one-month (January 2011) cruise passenger manifest. Before we can ask “who travels together?” we have to establish what the cleaned dataset actually is — how many passengers, what was removed, and what the base unit of analysis looks like.</p>
+<p>This is the first of five notebooks documenting the party-type analysis of a one-month (January 2011) cruise passenger manifest. Before we can ask “who travels together?” we have to establish what the cleaned dataset actually is , how many passengers, what was removed, and what the base unit of analysis looks like.</p>
 <p>Two companion files sit alongside this notebook:</p>
 <ul>
-<li><a href="../R/load_data.R"><code>R/load_data.R</code></a> — the cleaning pipeline itself</li>
-<li><a href="../README.md"><code>README.md</code></a> — a decision log documenting <em>why</em> the cleaning was done the way it was</li>
+<li><a href="../R/load_data.R"><code>R/load_data.R</code></a> , the cleaning pipeline itself</li>
+<li><a href="../README.md"><code>README.md</code></a> , a decision log documenting <em>why</em> the cleaning was done the way it was</li>
 </ul>
 <p>This notebook shows the <em>results</em> of those decisions; the reasoning is in the decision log.</p>
 </section>
@@ -4768,35 +4768,35 @@ color: #333;
 <p>After the sentinel recode, the missingness of each field is:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-b5585c89880f3122ed68" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b5585c89880f3122ed68">{"x":{"filter":"none","vertical":false,"data":[["Port_3","Date_of_Entry_3","Email","Port_2","Date_of_Entry_2","Document Number","Date_of_Expiry","State","Postcode","Document Type","Address","City","Country","Issuing Country"],["24,523","24,523","11,094","4,757","4,757","3,338","2,882","1,742","936","476","366","365","106","97"],["95.1%","95.1%","43.0%","18.4%","18.4%","13.0%","11.2%","6.8%","3.6%","1.9%","1.4%","1.4%","0.4%","0.4%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Missing (rows)<\/th>\n      <th>Missing (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":20,"dom":"t","columnDefs":[{"name":"variable","targets":0},{"name":"missing","targets":1},{"name":"missingness","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,20,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-85e6dcd5297e2b5e83f6" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-85e6dcd5297e2b5e83f6">{"x":{"filter":"none","vertical":false,"data":[["Port_3","Date_of_Entry_3","Email","Port_2","Date_of_Entry_2","Document Number","Date_of_Expiry","State","Postcode","Document Type","Address","City","Country","Issuing Country"],["24,523","24,523","11,094","4,757","4,757","3,338","2,882","1,742","936","476","366","365","106","97"],["95.1%","95.1%","43.0%","18.4%","18.4%","13.0%","11.2%","6.8%","3.6%","1.9%","1.4%","1.4%","0.4%","0.4%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Variable<\/th>\n      <th>Missing (rows)<\/th>\n      <th>Missing (%)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":20,"dom":"t","columnDefs":[{"name":"variable","targets":0},{"name":"missing","targets":1},{"name":"missingness","targets":2}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,20,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Three patterns stand out:</p>
 <ul>
-<li><strong><code>Port_3</code> and <code>Date_of_Entry_3</code> are 95.1% missing.</strong> That’s not a data-quality problem — most January 2011 itineraries had one or two port calls, not three. The missingness is <em>structural</em>: those columns only exist for the small minority of 3-port itineraries. The tidy <code>tidy_df</code> handles this correctly by turning absent port calls into absent rows rather than <code>NA</code> columns.</li>
-<li><strong><code>Email</code> is 43.0% missing.</strong> Nearly half of passengers have no email on file. This matters for any CRM analysis — a marketing strategy that assumes “we can reach everyone by email” is working with data that only exists for 57% of passengers.</li>
+<li><strong><code>Port_3</code> and <code>Date_of_Entry_3</code> are 95.1% missing.</strong> That’s not a data-quality problem , most January 2011 itineraries had one or two port calls, not three. The missingness is <em>structural</em>: those columns only exist for the small minority of 3-port itineraries. The tidy <code>tidy_df</code> handles this correctly by turning absent port calls into absent rows rather than <code>NA</code> columns.</li>
+<li><strong><code>Email</code> is 43.0% missing.</strong> Nearly half of passengers have no email on file. This matters for any CRM analysis , a marketing strategy that assumes “we can reach everyone by email” is working with data that only exists for 57% of passengers.</li>
 <li><strong><code>State</code> is 6.8% missing</strong>, which is largely non-US passengers (State isn’t a universal concept). Worth knowing for the address-homogeneity analysis in the next notebook.</li>
 </ul>
 </section>
 <section id="passenger-vs-crew" class="level2">
 <h2 class="anchored" data-anchor-id="passenger-vs-crew">Passenger vs crew</h2>
-<p>One field needs special handling: <code>Cabin Number</code>. Most values are real cabin numbers, but the string <code>&quot;CREW&quot;</code> marks crew rows — the only marker in the manifest that distinguishes crew from passengers.</p>
+<p>One field needs special handling: <code>Cabin Number</code>. Most values are real cabin numbers, but the string <code>&quot;CREW&quot;</code> marks crew rows , the only marker in the manifest that distinguishes crew from passengers.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-77de049c6b1e0f130e7b" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-77de049c6b1e0f130e7b">{"x":{"filter":"none","vertical":false,"data":[["Passengers","Crew"],[25742,37],["99.9%","0.1%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Category<\/th>\n      <th>Rows<\/th>\n      <th>Share<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":1},{"name":"category","targets":0},{"name":"n","targets":1},{"name":"pct","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-4e42746777da0b67b977" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4e42746777da0b67b977">{"x":{"filter":"none","vertical":false,"data":[["Passengers","Crew"],[25742,37],["99.9%","0.1%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Category<\/th>\n      <th>Rows<\/th>\n      <th>Share<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"className":"dt-right","targets":1},{"name":"category","targets":0},{"name":"n","targets":1},{"name":"pct","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Crew rows are excluded from every analysis downstream. They don’t book cabins, don’t have a “party”, and would distort every cabin-level metric if included. The <code>plain_data</code> → <code>df</code> → <code>passenger_df</code> chain is preserved so any number in later notebooks can be traced back to the exact source rows.</p>
 </section>
 <section id="the-base-unit-cabins-not-passengers" class="level2">
 <h2 class="anchored" data-anchor-id="the-base-unit-cabins-not-passengers">The base unit: cabins, not passengers</h2>
-<p>A service provider sells to a <strong>booking</strong> or <strong>cabin</strong>, not to an individual — so the natural unit of analysis is the cabin, not the passenger. But “how many cabins” and “how many passengers” point in different directions once cabins get bigger, and it’s worth seeing that tension directly before going further.</p>
+<p>A service provider sells to a <strong>booking</strong> or <strong>cabin</strong>, not to an individual , so the natural unit of analysis is the cabin, not the passenger. But “how many cabins” and “how many passengers” point in different directions once cabins get bigger, and it’s worth seeing that tension directly before going further.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-22b0c2fcf456fff6680e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-22b0c2fcf456fff6680e">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8],[1202,7478,1493,1078,153,1,2,1],["10.5%","65.6%","13.1%","9.4%","1.3%","0.0%","0.0%","0.0%"],[1202,14956,4479,4312,765,6,14,8],["4.7%","58.1%","17.4%","16.8%","3.0%","0.0%","0.1%","0.0%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Passengers per cabin<\/th>\n      <th>Cabins<\/th>\n      <th>% of cabins<\/th>\n      <th>Passengers in this size<\/th>\n      <th>% of passengers<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","pageLength":10,"columnDefs":[{"className":"dt-right","targets":[0,1,3]},{"name":"Passengers per cabin","targets":0},{"name":"Cabins","targets":1},{"name":"% of cabins","targets":2},{"name":"Passengers in this size","targets":3},{"name":"% of passengers","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-0d4c5f1dff6b752c8124" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0d4c5f1dff6b752c8124">{"x":{"filter":"none","vertical":false,"data":[[1,2,3,4,5,6,7,8],[1202,7478,1493,1078,153,1,2,1],["10.5%","65.6%","13.1%","9.4%","1.3%","0.0%","0.0%","0.0%"],[1202,14956,4479,4312,765,6,14,8],["4.7%","58.1%","17.4%","16.8%","3.0%","0.0%","0.1%","0.0%"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Passengers per cabin<\/th>\n      <th>Cabins<\/th>\n      <th>% of cabins<\/th>\n      <th>Passengers in this size<\/th>\n      <th>% of passengers<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","pageLength":10,"columnDefs":[{"className":"dt-right","targets":[0,1,3]},{"name":"Passengers per cabin","targets":0},{"name":"Cabins","targets":1},{"name":"% of cabins","targets":2},{"name":"Passengers in this size","targets":3},{"name":"% of passengers","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>The headline numbers from the table above:</p>
@@ -4812,17 +4812,17 @@ color: #333;
 </section>
 <section id="what-comes-next" class="level2">
 <h2 class="anchored" data-anchor-id="what-comes-next">What comes next</h2>
-<p>The next notebook asks: <em>given a cabin, who is in it?</em> It looks at how alike the members of each cabin are across every field — surname, address, country, sex, and so on — and characterises what the resulting clusters of party types look like by age. That’s where the seven-type party taxonomy starts to emerge.</p>
+<p>The next notebook asks: <em>given a cabin, who is in it?</em> It looks at how alike the members of each cabin are across every field , surname, address, country, sex, and so on , and characterises what the resulting clusters of party types look like by age. That’s where the seven-type party taxonomy starts to emerge.</p>
 <p>→ <a href="02_party_structure.html">02_party_structure.html</a></p>
 </section>
 <section id="files-this-notebook-reads" class="level2">
 <h2 class="anchored" data-anchor-id="files-this-notebook-reads">Files this notebook reads</h2>
 <ul>
-<li><code>data/derived/passenger_df.Rds</code> — the cleaned passenger frame</li>
-<li><code>data/derived/crew_df.Rds</code> — the crew subset (excluded downstream)</li>
-<li><code>data/derived/mssgnss.Rds</code> — the missingness audit table</li>
-<li><code>data/derived/cabin_distribution.Rds</code> — cabin sizes and their share of passengers</li>
-<li><code>data/derived/multi_share_cabin.Rds</code> — the multi-person-cabin headline</li>
+<li><code>data/derived/passenger_df.Rds</code> , the cleaned passenger frame</li>
+<li><code>data/derived/crew_df.Rds</code> , the crew subset (excluded downstream)</li>
+<li><code>data/derived/mssgnss.Rds</code> , the missingness audit table</li>
+<li><code>data/derived/cabin_distribution.Rds</code> , cabin sizes and their share of passengers</li>
+<li><code>data/derived/multi_share_cabin.Rds</code> , the multi-person-cabin headline</li>
 </ul>
 </section>
 
